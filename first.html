@@ -126,9 +126,9 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
 </head>
 <body>
 <div class="card">
-    <input type="hidden" name="restaurantId" value="@restaurant.id">
+    <input type="hidden" name="holidayTableId" value="@holidayTable.id">
     <div class="card-header">
-        <h3 class="card-title">Discount settings</h3>
+        <h3 class="card-title">holiday settings</h3>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -138,37 +138,37 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
                     <th style="width: 12%">Dates</th>
                     <th style="width: 4%">Remove</th>
                 </tr></thead>
-                <tbody id="discountContent">
-                <tr id="discount_248" index="0">
-                    <input class="form-control discounts-restaurant-id" type="hidden" name="discounts[0].restaurantId" value="4">
-                    <input class="form-control discounts-id" type="hidden" name="discounts[0].id" value="0">
+                <tbody id="holidayContent">
+                <tr id="holiday_248" index="0">
+                    <input class="form-control holidays-holidayTable-id" type="hidden" name="holidays[0].holidayTableId" value="4">
+                    <input class="form-control holidays-id" type="hidden" name="holidays[0].id" value="0">
                     <td>
-                        <dl class=" " id="discountReasonInput0_field">
-                            <dt><label for="discountReasonInput0"></label></dt>
+                        <dl class=" " id="holidayReasonInput0_field">
+                            <dt><label for="holidayReasonInput0"></label></dt>
                             <dd>
-                                <input type="text" id="discountReasonInput0" name="discounts[0].reason" value="birthday" class="form-control">
+                                <input type="text" id="holidayReasonInput0" name="holidays[0].reason" value="birthday" class="form-control">
                             </dd>
                         </dl>
                     </td>
                     <td>
-                        <input type="hidden" id="discountPeriodConditionsInput0" name="discounts[0].period_condition" value="{}">
-                        <dl class=" " id="discountPeriodConditionsInput0_field">
+                        <input type="hidden" id="holidayPeriodConditionsInput0" name="holidays[0].period_condition" value="{}">
+                        <dl class=" " id="holidayPeriodConditionsInput0_field">
                             <dt></dt>
                             <dd>
-                                <div id="discountDiscountConditionsDatesDiv0">Dates:<br>
-                                    <div id="discountDiscountConditionsDatesBlock0" style="width:100%"></div>
+                                <div id="holidayholidayConditionsDatesDiv0">Dates:<br>
+                                    <div id="holidayholidayConditionsDatesBlock0" style="width:100%"></div>
                                     <div class="input-group">
-                                        <input class="form-control" type="date" id="discountDiscountConditionsDatesDate0">
+                                        <input class="form-control" type="date" id="holidayholidayConditionsDatesDate0">
                                         <span class="input-group-btn">
-                                            <button type="button" class="btn btn-default" id="discountDiscountConditionsDatesAdd0">+</button>
+                                            <button type="button" class="btn btn-default" id="holidayholidayConditionsDatesAdd0">+</button>
                                         </span>
                                     </div>
                                     
-                                    <div id="discountDiscountConditionsHours0" style="border-top:#ccc 1px solid;padding-top:10px">
-                                        <div id="discountDiscountConditionsHoursBlock0" style="width:100%"></div>
+                                    <div id="holidayholidayConditionsHours0" style="border-top:#ccc 1px solid;padding-top:10px">
+                                        <div id="holidayholidayConditionsHoursBlock0" style="width:100%"></div>
                                         <div class="input-group">
-                                            <input class="form-control hours" type="text" id="discountDiscountConditionsHourFrom0" placeholder="Eg. 10:30">
-                                            <input class="form-control hours" type="text" id="discountDiscountConditionsHourTo0" placeholder="Eg. 20:45">
+                                            <input class="form-control hours" type="text" id="holidayholidayConditionsHourFrom0" placeholder="Eg. 10:30">
+                                            <input class="form-control hours" type="text" id="holidayholidayConditionsHourTo0" placeholder="Eg. 20:45">
                                             <span class="input-group-btn input-group-append">
                                             </span>
                                         </div>
@@ -180,7 +180,7 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
                     </td>
                     
                     <td>
-                        <button class="btn btn-danger removeDiscountButton" type="button" data-discountid="0" id="removeDiscountButton">
+                        <button class="btn btn-danger removeholidayButton" type="button" data-holidayid="0" id="removeholidayButton">
                             Remove
                         </button>
                     </td>
@@ -190,7 +190,7 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
         </div>
     </div>
 
-    <button type="button" id="btnAddDiscount" class="btn btn-primary">
+    <button type="button" id="btnAddholidayRow" class="btn btn-primary">
         <i class="fa fa-plus" aria-hidden="true"></i>
         Add new
     </button>
@@ -202,20 +202,20 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
 
 
 <script type="text/javascript">
-    $(".removeDiscountButton").click(function() {
+    $(".removeholidayButton").click(function() {
         $(this).parent().parent().remove();
     });
 
 
-    $("#btnAddDiscount").click(function() {
-        var firstDiscount = $("#discountContent tr").last();
-        var restaurantId = firstDiscount.find(".discounts-restaurant-id").attr("value");
-        var discountContent = firstDiscount.clone();
+    $("#btnAddholidayRow").click(function() {
+        var firstholiday = $("#holidayContent tr").last();
+        var holidayTableId = firstholiday.find(".holidays-holidayTable-id").attr("value");
+        var holidayContent = firstholiday.clone();
 
-        var lastIndex = parseInt(discountContent.attr('index'), 10) + 1;
+        var lastIndex = parseInt(holidayContent.attr('index'), 10) + 1;
 
-        discountContent.attr('index', lastIndex);
-        discountContent.find('*').each(function() {
+        holidayContent.attr('index', lastIndex);
+        holidayContent.find('*').each(function() {
             if($(this).attr('name')) {
                 $(this).attr('name', String($(this).attr('name')).replace(lastIndex-1, lastIndex));
             }
@@ -226,26 +226,26 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
                 $(this).attr('for', String($(this).attr('for')).replace(lastIndex-1, lastIndex));
             }
         });
-        discountContent.find(".discounts-restaurant-id").attr("value", restaurantId);
-        discountContent.find(".discounts-id").attr("value", 0);
-        $("#discountContent").append(discountContent);
+        holidayContent.find(".holidays-holidayTable-id").attr("value", holidayTableId);
+        holidayContent.find(".holidays-id").attr("value", 0);
+        $("#holidayContent").append(holidayContent);
 
         $(".hours").inputmask("99:99");
 
-        $("#discountDiscountTypeInput"+lastIndex).change();
-        $("#discountPeriodTypeInput"+lastIndex).change();
+        $("#holidayholidayTypeInput"+lastIndex).change();
+        $("#holidayPeriodTypeInput"+lastIndex).change();
 
-        $(".removeDiscountButton").click(function() {
+        $(".removeholidayButton").click(function() {
             $(this).parent().parent().remove();
         });
     });
 
-    $(document).on('click', "button[id^=discountDiscountConditionsDatesAdd]", function() {
-        $('#discountPeriodConditionsInput'+index).val('');
+    $(document).on('click', "button[id^=holidayholidayConditionsDatesAdd]", function() {
         var index = String($(this).attr('id')).replace(/[^0-9]/g, '');
-        var valueDate = $('#discountDiscountConditionsDatesDate'+index).val().trim();
-        var value1 = $('#discountDiscountConditionsHourFrom'+index).val().trim();
-        var value2 = $('#discountDiscountConditionsHourTo'+index).val().trim();
+        var valueDate = $('#holidayholidayConditionsDatesDate'+index).val();
+        var value1 = $('#holidayholidayConditionsHourFrom'+index).val().trim();
+        var value2 = $('#holidayholidayConditionsHourTo'+index).val().trim();
+        $('#holidayPeriodConditionsInput'+index).val('{"'+valueDate+'":[]}');
         if (!value1 || !value2) {
             return;
         }
@@ -254,47 +254,53 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
             return;
         }
         var checked = []
-        var jsonObj = "\""+valueDate+"\":\"[\""+value1+"\",\""+value2+"\"]"
-        $('input[name="discountDiscountConditionsDates'+index+'[]"]:checked').each(function() {
+        $('input[name="holidayholidayConditionsDates'+index+'[]"]:checked').each(function() {
             checked.push($(this).val());
         });
-            if (checked.indexOf(valueDate) === -1) {
-            checked.push(valueDate+"/"+ valueTime);
-            $('#discountDiscountConditionsDatesBlock'+index).append('<label style="font-weight:normal;margin-right:5px"><input type="checkbox" name="discountDiscountConditionsDates'+index+'[]" value="'+valueDate+"/"+valueTime+'" checked>'+valueDate+' '+valueTime+'</label>');
+        if (checked.indexOf(valueDate) === -1) {
+            var x = false
+            for(var i in checked) if(checked[i] == (valueDate+'/'+valueTime)) var x = true
+            if(x===false)$('#holidayholidayConditionsDatesBlock'+index).append('<label style="font-weight:normal;margin-right:5px"><input type="checkbox" name="holidayholidayConditionsDates'+index+'[]" value="'+valueDate+"/"+valueTime+'" checked>'+valueDate+' '+valueTime+'</label>');
         }
+        checked.push(valueDate+'/'+valueTime);
         checked.sort();
-        console.log(checked[0])
-        var json = JSON.parse($('#discountPeriodConditionsInput'+index).val()); //jsonObj
-        json.dates = [];
-        json.hours = [];
+        var jsonObj = '{';
         for(var i in checked){
-            var hoursSplit = String(checked[i].split('/')[1]).split("-");
-            json.dates.push(checked[i].split('/')[0].trim())
-            json.hours.push([String(hoursSplit[0]).trim(), String(hoursSplit[1]).trim()])
+            var dateSplit = checked[i].split('/')[0];
+            var hoursSplit = checked[i].split('/')[1].split("-");
+            if(jsonObj != '{') jsonObj+=',';
+            jsonObj+='"'+dateSplit+'":[["'+hoursSplit[0]+'","'+hoursSplit[1]+'"]]';
+            
         }
-        $('#discountPeriodConditionsInput'+index).val(JSON.stringify(json));
+        jsonObj+='}';
+        var json = JSON.parse(jsonObj);
+        $('#holidayPeriodConditionsInput'+index).val(JSON.stringify(json));
     });
-    $(document).on('change', 'input[name^="discountDiscountConditionsDates"]', function() {
+
+    $(document).on('change', 'input[name^="holidayholidayConditionsDates"]', function() {
         var index = String($(this).attr('name')).replace(/[^0-9]/g, '');
-        $('input[name="discountDiscountConditionsDates'+index+'[]"]').each(function() {
+        $('input[name="holidayholidayConditionsDates'+index+'[]"]').each(function() {
             if($(this).prop('checked') === false) {
                 $(this).closest('label').remove();
             }
         });
         var checked = []
-        $('input[name="discountDiscountConditionsDates'+index+'[]"]:checked').each(function() {
+        $('input[name="holidayholidayConditionsDates'+index+'[]"]:checked').each(function() {
             checked.push($(this).val());
         });
         checked.sort();
-        var json = JSON.parse($('#discountPeriodConditionsInput'+index).val());
-        json.dates = [];
-        json.hours = [];
+        console.log(checked)
+        var jsonObj = '{';
         for(var i in checked){
-            var hoursSplit = String(checked[i].split('/')[1]).split("-");
-            json.dates.push(checked[i].split('/')[0].trim())
-            json.hours.push([String(hoursSplit[0]).trim(), String(hoursSplit[1]).trim()])
+            var dateSplit = checked[i].split('/')[0];
+            var hoursSplit = checked[i].split('/')[1].split("-");
+            if(jsonObj != '{') jsonObj+=',';
+            jsonObj+='"'+dateSplit+'":[["'+hoursSplit[0]+'","'+hoursSplit[1]+'"]]';
+            
         }
-        $('#discountPeriodConditionsInput'+index).val(JSON.stringify(json));
+        jsonObj+='}';
+        var json = JSON.parse(jsonObj);
+        $('#holidayPeriodConditionsInput'+index).val(JSON.stringify(json));
     });
 </script>
 </body>
