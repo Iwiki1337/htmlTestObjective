@@ -126,9 +126,9 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
 </head>
 <body>
 <div class="card">
-    <input type="hidden" name="restaurantId" value="@restaurant.id">
+    <input type="hidden" name="holidayRowId" value="@holidayRow.id">
     <div class="card-header">
-        <h3 class="card-title">Discount settings</h3>
+        <h3 class="card-title">holiday table</h3>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -137,23 +137,23 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
                     <tr><th style="width: 12%">Holiday</th>
                     <th style="width: 4%">Remove</th>
                 </tr></thead>
-                <tbody id="discountContent">
-                <tr id="discount_248" index="0">
-                    <input class="form-control discounts-restaurant-id" type="hidden" name="discounts[0].restaurantId" value="4">
-                    <input class="form-control discounts-id" type="hidden" name="discounts[0].id" value="0">
+                <tbody id="holidayContent">
+                <tr id="holiday_248" index="0">
+                    <input class="form-control holidays-holidayRow-id" type="hidden" name="holidays[0].holidayRowId" value="4">
+                    <input class="form-control holidays-id" type="hidden" name="holidays[0].id" value="0">
                     <td>
-                        Client Type:                 
-                        <dl class=" " id="discountClientTypeInput0_field">
-                            <dt><label for="discountClientTypeInput0"></label></dt>
+                        holiday Type:                 
+                        <dl class=" " id="holidayTypeInput0_field">
+                            <dt><label for="holidayTypeInput0"></label></dt>
                             <dd>
-                                <select id="discountClientTypeInput0" name="discounts[0].client_type" class="form-control">
+                                <select id="holidayTypeInput0" name="holidays[0].holiday_type" class="form-control">
                                         <option value="0">Select holiday</option><option value="1">NEW YEAR 2022</option><option value="2">EASTER 2022</option>
                                 </select>
                             </dd> 
                         </dl>
                     </td>
                     <td>
-                        <button class="btn btn-danger remove-discount-button" type="button" data-discountid="0" id="remove-discount-button">
+                        <button class="btn btn-danger remove-holiday-button" type="button" data-holidayid="0" id="remove-holiday-button">
                             Remove
                         </button>
                     </td>
@@ -163,7 +163,7 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
         </div>
     </div>
 
-    <button type="button" id="btnAddDiscount" class="btn btn-primary">
+    <button type="button" id="btnAddholiday" class="btn btn-primary">
         <i class="fa fa-plus" aria-hidden="true"></i>
         Add new
     </button>
@@ -176,20 +176,20 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
 
 
 <script type="text/javascript">
-    $(".remove-discount-button").click(function() {
+    $(".remove-holiday-button").click(function() {
         $(this).parent().parent().remove();
     });
 
 
-    $("#btnAddDiscount").click(function() {
-        var firstDiscount = $("#discountContent tr").last();
-        var restaurantId = firstDiscount.find(".discounts-restaurant-id").attr("value");
-        var discountContent = firstDiscount.clone();
+    $("#btnAddholiday").click(function() {
+        var firstholiday = $("#holidayContent tr").last();
+        var holidayRowId = firstholiday.find(".holidays-holidayRow-id").attr("value");
+        var holidayContent = firstholiday.clone();
 
-        var lastIndex = parseInt(discountContent.attr('index'), 10) + 1;
+        var lastIndex = parseInt(holidayContent.attr('index'), 10) + 1;
 
-        discountContent.attr('index', lastIndex);
-        discountContent.find('*').each(function() {
+        holidayContent.attr('index', lastIndex);
+        holidayContent.find('*').each(function() {
             if($(this).attr('name')) {
                 $(this).attr('name', String($(this).attr('name')).replace(lastIndex-1, lastIndex));
             }
@@ -200,13 +200,24 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
                 $(this).attr('for', String($(this).attr('for')).replace(lastIndex-1, lastIndex));
             }
         });
+        holidayContent.find(".holidays-holidayRow-id").attr("value", holidayRowId);
+        holidayContent.find(".holidays-id").attr("value", 0);
+        
+        holidayContent.find('#holidayTypeInput'+lastIndex).val('all');
+        holidayContent.find('#holidayPeriodTypeInput'+lastIndex).val('day_of_week');
+        holidayContent.find('#holidayReasonInput'+lastIndex).val('');
 
-        discountContent.find('#discountMaximumDiscountDiv'+lastIndex).show();
-        discountContent.find('#discountExcludeCategoryIdsDiv'+lastIndex).hide();
+        holidayContent.find('#holidayMaximumholidayDiv'+lastIndex).show();
+        holidayContent.find('#holidayExcludeCategoryIdsDiv'+lastIndex).hide();
 
-        $("#discountContent").append(discountContent);
+        $("#holidayContent").append(holidayContent);
 
-        $(".removeDiscountButton").click(function() {
+        $(".hours").inputmask("99:99");
+
+        $("#holidayholidayTypeInput"+lastIndex).change();
+        $("#holidayPeriodTypeInput"+lastIndex).change();
+
+        $(".remove-holiday-button").click(function() {
             $(this).parent().parent().remove();
         });
     });
