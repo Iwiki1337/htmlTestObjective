@@ -269,7 +269,7 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
             var dateSplit = checked[i].split('/')[0];
             var hoursSplit = checked[i].split('/')[1].split("-");
             if(jsonObj != '{') jsonObj+=',';
-            jsonObj+='"'+dateSplit+'":[["'+hoursSplit[0]+'","'+hoursSplit[1]+'"]]';
+            jsonObj+='"'+dateSplit+'":["'+hoursSplit[0]+'","'+hoursSplit[1]+'"]';
             
         }
         jsonObj+='}';
@@ -295,7 +295,7 @@ mask:function(a){a.definitions={p:{validator:function(){return!1},cardinality:1}
             var dateSplit = checked[i].split('/')[0];
             var hoursSplit = checked[i].split('/')[1].split("-");
             if(jsonObj != '{') jsonObj+=',';
-            jsonObj+='"'+dateSplit+'":[["'+hoursSplit[0]+'","'+hoursSplit[1]+'"]]';
+            jsonObj+='"'+dateSplit+'":["'+hoursSplit[0]+'","'+hoursSplit[1]+'"]';
             
         }
         jsonObj+='}';
